@@ -1,3 +1,79 @@
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+
+public class StudentForm extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        // GridPane layout
+        GridPane grid = new GridPane();
+        grid.setVgap(10);
+        grid.setHgap(10);
+        grid.setStyle("-fx-padding: 20;");
+
+        // Labels and TextFields
+        Label nameLabel = new Label("Name:");
+        
+        TextField nameField = new TextField();
+
+        Label rollLabel = new Label("Roll Number:");
+        TextField rollField = new TextField();
+
+        Label courseLabel = new Label("Course:");
+        TextField courseField = new TextField();
+
+        Label semLabel = new Label("Semester:");
+        TextField semField = new TextField();
+
+        Label emailLabel = new Label("Email:");
+        TextField emailField = new TextField();
+
+        Label phoneLabel = new Label("Phone:");
+        TextField phoneField = new TextField();
+
+        Button insertButton = new Button("Insert");
+
+        // Add to GridPane
+        grid.add(nameLabel, 0, 0);      grid.add(nameField, 1, 0);
+        grid.add(rollLabel, 0, 1);      grid.add(rollField, 1, 1);
+        grid.add(courseLabel, 0, 2);    grid.add(courseField, 1, 2);
+        grid.add(semLabel, 0, 3);       grid.add(semField, 1, 3);
+        grid.add(emailLabel, 0, 4);     grid.add(emailField, 1, 4);
+        grid.add(phoneLabel, 0, 5);     grid.add(phoneField, 1, 5);
+        grid.add(insertButton, 1, 6);
+
+        // Insert button action (example)
+        insertButton.setOnAction(e -> {
+            String name = nameField.getText();
+            String roll = rollField.getText();
+            String course = courseField.getText();
+            String sem = semField.getText();
+            String email = emailField.getText();
+            String phone = phoneField.getText();
+
+            // Just printing values for now
+            System.out.println("Name: " + name);
+            System.out.println("Roll: " + roll);
+            System.out.println("Course: " + course);
+            System.out.println("Semester: " + sem);
+            System.out.println("Email: " + email);
+            System.out.println("Phone: " + phone);
+        });
+
+        // Set scene and show
+        Scene scene = new Scene(grid, 400, 350);
+        primaryStage.setTitle("Student Entry Form");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
