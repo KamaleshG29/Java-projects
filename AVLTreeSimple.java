@@ -1,3 +1,36 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class InsertDataJDBC {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/student";
+        String user = "root";
+        String password = "root"; // Use your MySQL password
+
+        try {
+            Connection conn = DriverManager.getConnection(url, user, password);
+
+            String query = "INSERT INTO students (id, name, marks) VALUES (?, ?, ?)";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+
+            pstmt.setInt(1, 1);             // id
+            pstmt.setString(2, "Kamalesh"); // name
+            pstmt.setInt(3, 90);            // marks
+
+            int rows = pstmt.executeUpdate();
+            if (rows > 0) {
+                System.out.println("Data inserted successfully.");
+            }
+
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Insertion failed.");
+            e.printStackTrace();
+        }
+    }
+}
+
 package demo;
 
 public class AVLTreeSimple {
